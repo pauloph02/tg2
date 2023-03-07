@@ -18,35 +18,39 @@ class _TelaDeRespostasState extends State<TelaDeRespostas> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              height: 250,
-              width: 150,
-              color: Colors.red,
-              child: const Icon(Icons.star_rounded),
+            ElevatedButton(onPressed: (){},
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(150, 250),
+              backgroundColor: Colors.red
+            ), 
+            child: const Icon(Icons.star, color: Colors.black), 
             ),
-            Container(
-              height: 250,
-              width: 150,
-              color: Colors.amber,
-              child: const Icon(Icons.circle),
-            )
+             ElevatedButton(onPressed: (){},
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(150, 250),
+              backgroundColor: Colors.amber
+            ), 
+            child: const Icon(Icons.circle, color: Colors.black), 
+            ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              height: 250,
-              width: 150,
-              color: Colors.blue,
-              child: const Icon(Icons.beach_access_rounded),
+             ElevatedButton(onPressed: (){},
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(150, 250),
+              backgroundColor: Colors.blue
+            ), 
+            child: const Icon(Icons.beach_access_rounded, color: Colors.black), 
             ),
-            Container(
-              height: 250,
-              width: 150,
-              color: Colors.purple,
-              child: const Icon(Icons.bedtime_rounded),
-            )
+             ElevatedButton(onPressed: (){},
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(150, 250),
+              backgroundColor: Colors.purple
+            ), 
+            child: const Icon(Icons.bedtime_rounded, color: Colors.black), 
+            ),
           ],
         )
         ],
