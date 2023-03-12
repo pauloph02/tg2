@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tg/mobile/telamobile.dart';
+import 'package:tg/web/web.dart';
 
 
 void main(List<String> args) {
@@ -11,8 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        home: TelaMobile(),
+    var isWeb = kIsWeb;
+
+    return  MaterialApp(
+        home: isWeb ? WebInicial() : TelaMobile(),
       );
     
     
