@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     var isWeb = kIsWeb;
 
     return  MaterialApp(
-        home: isWeb ? WebInicial() : TelaMobile(),
+        home: isWeb ? const WebInicial() : const TelaMobile(),
       );
     
     

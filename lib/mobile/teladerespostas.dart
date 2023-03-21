@@ -20,14 +20,14 @@ class _TelaDeRespostasState extends State<TelaDeRespostas> {
           children: [
             ElevatedButton(onPressed: (){},
             style: ElevatedButton.styleFrom(
-              fixedSize: const Size(150, 250),
+              fixedSize:  Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
               backgroundColor: Colors.red
             ), 
             child: const Icon(Icons.star, color: Colors.black), 
             ),
              ElevatedButton(onPressed: (){},
             style: ElevatedButton.styleFrom(
-              fixedSize: const Size(150, 250),
+              fixedSize: Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
               backgroundColor: Colors.amber
             ), 
             child: const Icon(Icons.circle, color: Colors.black), 
@@ -39,14 +39,14 @@ class _TelaDeRespostasState extends State<TelaDeRespostas> {
           children: [
              ElevatedButton(onPressed: (){},
             style: ElevatedButton.styleFrom(
-              fixedSize: const Size(150, 250),
+              fixedSize: Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
               backgroundColor: Colors.blue
             ), 
             child: const Icon(Icons.beach_access_rounded, color: Colors.black), 
             ),
              ElevatedButton(onPressed: (){},
             style: ElevatedButton.styleFrom(
-              fixedSize: const Size(150, 250),
+              fixedSize: Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
               backgroundColor: Colors.purple
             ), 
             child: const Icon(Icons.bedtime_rounded, color: Colors.black), 
