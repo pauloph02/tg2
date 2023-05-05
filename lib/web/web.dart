@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'perguntadois.dart';
+
 
 class WebInicial extends StatefulWidget {
   const WebInicial({super.key});
@@ -17,13 +19,16 @@ class _WebInicialState extends State<WebInicial> {
   FirebaseAuth auth = FirebaseAuth.instance;
   List<String> perguntas =  ["Quantos mundiais o Palmeiras já ganhou?", "Quantas libertadores o Corinthians tem?", "Quantas bolas de ouro o Neymar possui?"];
   var isWeb = kIsWeb;
+  
+ 
     
   @override
   Widget build(BuildContext context) {
     perguntas.shuffle();
+    
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
-        stream: firestore.collection("questions").snapshots(),
+        stream: firestore.collection("questions").where('id', isEqualTo: "a").snapshots(),
         builder: (context, snapshot){
           if (!snapshot.hasData){
             return const Center(
@@ -33,6 +38,22 @@ class _WebInicialState extends State<WebInicial> {
 
           var questions = snapshot.data!.docs as List<QueryDocumentSnapshot<Map<String, dynamic>>>;
           var pergunta = questions.map((q) => q['question']);
+           String resposta1 = questions.map((q) => q['optionA']).toString();
+           String resposta2 = questions.map((q) => q['optionB']).toString();
+           String resposta3 = questions.map((q) => q['optionC']).toString();
+           String resposta4 = questions.map((q) => q['optionD']).toString();
+           String respostaCerta = questions.map((q) => q['correctOpt']).toString();
+           int acertos = 0;
+           String respostaDada = "";
+           corrigir(resposta){
+            if (resposta == respostaCerta){
+              acertos += 1;
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PerguntaDois(acertos: acertos,) ));
+              
+            }else{
+              Navigator.push(context, MaterialPageRoute(builder: (context) => PerguntaDois(acertos: acertos,) ));
+            }
+           }
           
             return  ListView(
               children:  [Column(
@@ -51,31 +72,46 @@ class _WebInicialState extends State<WebInicial> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(onPressed: (){},
+                  ElevatedButton(onPressed: (){
+                    respostaDada = "(A)";
+                    
+                    corrigir(respostaDada);
+                   
+                  },
                    style: ElevatedButton.styleFrom(
                   fixedSize:  Size(MediaQuery.of(context).size.width * .4, MediaQuery.of(context).size.height *.15),
                   backgroundColor: Colors.red
                 ), child: 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children:  [
                       Icon(Icons.star),
                       SizedBox(width: 25,),
-                      Text("0")
+                      Text(resposta1)
+                      /* Center(
+                        child: Text(resposta1, style: const TextStyle(
+                        fontSize: 30
+                ),)) */
                     ],
                   )
                    ),
-                  ElevatedButton(onPressed: (){},
+                  ElevatedButton(onPressed: (){
+                    respostaDada = "(B)";
+                  
+                     corrigir(respostaDada);
+                     
+              
+                  },
                    style: ElevatedButton.styleFrom(
                   fixedSize: Size(MediaQuery.of(context).size.width * .4, MediaQuery.of(context).size.height *.15),
                   backgroundColor: Colors.amber
                 ),child: 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children:  [
                       Icon(Icons.circle),
                       SizedBox(width: 25,),
-                      Text("1")
+                      Text(resposta2)
                     ],
                   ), 
                    )
@@ -85,16 +121,20 @@ class _WebInicialState extends State<WebInicial> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(onPressed: (){},
+                  ElevatedButton(onPressed: (){
+                    respostaDada = "(C)";
+                    corrigir(respostaDada);
+                    
+                  },
                    style: ElevatedButton.styleFrom(
                   fixedSize: Size(MediaQuery.of(context).size.width * .4, MediaQuery.of(context).size.height *.15),
                   backgroundColor: Colors.blue
                 ), child: 
                   Row(
-                    children: const [
+                    children:  [
                       Icon(Icons.beach_access_rounded),
                       SizedBox(width: 25,),
-                      Text("2")
+                      Text(resposta3)
                     ],
                   )
                    ),
@@ -106,10 +146,14 @@ class _WebInicialState extends State<WebInicial> {
                     children: [
                       const Icon(Icons.bedtime_rounded),
                       const SizedBox(width: 25,),
-                      const Text("3")
+                       Text(resposta4)
                     ],
                   ),
-                   onPressed: (){},
+                   onPressed: (){
+                    respostaDada = "(D)";
+                    corrigir(respostaDada);
+                    
+                   },
                    style: ElevatedButton.styleFrom(
                   fixedSize: Size(MediaQuery.of(context).size.width * .4, MediaQuery.of(context).size.height *.15),
                   backgroundColor: Colors.purple
