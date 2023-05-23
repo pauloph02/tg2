@@ -26,21 +26,23 @@ class _TelaDeAcertosState extends State<TelaDeAcertos> {
     
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
-          color: Colors.amber                 
-                ),
           child: Column(
             children: [
               const Padding(padding: EdgeInsets.all(20),
-              child: Text("Jogo finalizado!!", style: const TextStyle(
+              child: Text("Jogo finalizado!!", style: TextStyle(
+                  fontSize: 30
+                )),
+              ),
+              const Padding(padding: EdgeInsets.all(20),
+              child: Text("Você todas as questões, como resultado obteve:", style: TextStyle(
                   fontSize: 30
                 )),
               ),
               Padding(padding: EdgeInsets.all(20),
-              child: Text("Seu resultado foi: ${widget.acertos}/5", style: const TextStyle(
+              child: Text("${widget.acertos} acertos", style: const TextStyle(
                   fontSize: 30
                 )),
               ),
