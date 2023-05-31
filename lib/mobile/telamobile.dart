@@ -2,8 +2,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:tg/web/web.dart';
-
 import 'teladerespostas.dart';
 
 class TelaMobile extends StatefulWidget {
@@ -14,6 +12,9 @@ class TelaMobile extends StatefulWidget {
 }
 
 class _TelaMobileState extends State<TelaMobile> {
+
+  
+
   TextEditingController codeController = TextEditingController();
   TextEditingController nicknameController = TextEditingController();
   String nickname = '';

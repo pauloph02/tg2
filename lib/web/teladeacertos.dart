@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,9 +17,6 @@ class TelaDeAcertos extends StatefulWidget {
 class _TelaDeAcertosState extends State<TelaDeAcertos> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
-  var isWeb = kIsWeb;
-  
-  
  
     
   @override
@@ -41,7 +39,7 @@ class _TelaDeAcertosState extends State<TelaDeAcertos> {
                   fontSize: 30
                 )),
               ),
-              Padding(padding: EdgeInsets.all(20),
+              Padding(padding: const EdgeInsets.all(20),
               child: Text("${widget.acertos} acertos", style: const TextStyle(
                   fontSize: 30
                 )),

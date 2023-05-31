@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:tg/mobile/telamobile.dart';
-import 'package:tg/web/web.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'mobile/teladerespostas.dart';
+import 'web/web2.dart';
 
 
 const firebaseOptions  = FirebaseOptions(
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
     var isWeb = kIsWeb;
 
     return  MaterialApp(
-        home: isWeb ? const WebInicial() : const TelaMobile(),
+        home: isWeb ?  WebScreen() : const TelaDeRespostas(),
       );
     
     
