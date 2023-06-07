@@ -21,18 +21,33 @@ void main(List<String> args) async {
   
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: firebaseOptions);
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  
+   MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int currentQuestion = 1;
+
+  void updateCurrentQuestion(int newQuestion) {
+    // Atualiza o estado da classe pai com a nova pergunta
+    setState(() {
+      currentQuestion = newQuestion;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     var isWeb = kIsWeb;
 
     return  MaterialApp(
-        home: isWeb ?  WebScreen() : const TelaDeRespostas(),
+        home: isWeb ?  TelaDeRespostas(onCurrentQuestionChanged: updateCurrentQuestion) : TelaDeRespostas(onCurrentQuestionChanged: updateCurrentQuestion),
       );
     
     

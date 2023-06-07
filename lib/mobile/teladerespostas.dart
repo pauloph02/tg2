@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../web/teladeacertos.dart';
-
+import '../web/web2.dart';
 
 class TelaDeRespostas extends StatefulWidget {
-  const TelaDeRespostas({super.key});
+  final Function(int) onCurrentQuestionChanged;
+  TelaDeRespostas({required this.onCurrentQuestionChanged});
 
   @override
   State<TelaDeRespostas> createState() => _TelaDeRespostasState();
 }
 
 class _TelaDeRespostasState extends State<TelaDeRespostas> {
+  void onCurrentQuestionChanged(int newQuestion) {
+    // Atualize o estado da classe WebScreen com a nova pergunta
+    setState(() {
+      // Atualize o estado aqui com base na nova pergunta
+    });
+  }
+
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   var currentQuestion = 4;
   int? totalQuestions;
@@ -20,20 +28,23 @@ class _TelaDeRespostasState extends State<TelaDeRespostas> {
   Future _getQuestions() async {
     QuerySnapshot<Map<String, dynamic>> snapshot =
         await firestore.collection("questions").get();
-         await firestore.collection("Control").get();
-        totalQuestions = snapshot.docs.length;
-        FirebaseFirestore.instance
-      .collection("Control")
-      .where('id', isEqualTo: 131313)
-      .get()
-      .then((QuerySnapshot snapshot) {
-    for (var doc in snapshot.docs) {
-      var data = doc.data() as Map<String, dynamic>; // Obtém os dados do documento
-      var currentsQuestion = data['current_question']; // Obtém o valor de 'current_question' do documento
-      currentQuestion = currentsQuestion;
-    }
+    await firestore.collection("Control").get();
+    totalQuestions = snapshot.docs.length;
+    FirebaseFirestore.instance
+        .collection("Control")
+        .where('id', isEqualTo: 131313)
+        .get()
+        .then(
+      (QuerySnapshot snapshot) {
+        for (var doc in snapshot.docs) {
+          var data =
+              doc.data() as Map<String, dynamic>; // Obtém os dados do documento
+          var currentsQuestion = data[
+              'current_question']; // Obtém o valor de 'current_question' do documento
+          currentQuestion = currentsQuestion;
+        }
       },
-      );
+    );
   }
 
   @override
@@ -58,9 +69,11 @@ class _TelaDeRespostasState extends State<TelaDeRespostas> {
           .then((QuerySnapshot snapshot) {
         for (var doc in snapshot.docs) {
           doc.reference.update({'current_question': currentQuestion});
-        } //;
+        }
+        onCurrentQuestionChanged(
+            currentQuestion); // Chama a função callback para atualizar o estado em outra classe
       });
-    } 
+    }
     if (currentQuestion > totalQuestions!) {
       firestore
           .collection("Control")
@@ -79,17 +92,17 @@ class _TelaDeRespostasState extends State<TelaDeRespostas> {
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       body: FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
         future: firestore
             .collection("questions")
             .where('ordem', isEqualTo: currentQuestion)
             .get(),
-        builder: (context, snapshot){
-          if (!snapshot.hasData){
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -102,69 +115,66 @@ class _TelaDeRespostasState extends State<TelaDeRespostas> {
           String resposta3 = question.data()['optionC'];
           String resposta4 = question.data()['optionD'];
           String respostaCerta = question.data()['correctOpt'];
-           
-           
-      
-        return Column(
+
+          return Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(onPressed: (){
-                  
-                  corrigir(resposta1, respostaCerta);
-                },
-                style: ElevatedButton.styleFrom(
-                fixedSize:  Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
-                backgroundColor: Colors.red
-                ), 
-                child: const Icon(Icons.star, color: Colors.black), 
-                ),
-                  ElevatedButton(onPressed: (){
-                  
-                  corrigir(resposta2, respostaCerta);
-                },
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
-                  backgroundColor: Colors.amber
-                ), 
-                child: const Icon(Icons.circle, color: Colors.black), 
-                ),
-              ],
-            ),
+                  ElevatedButton(
+                    onPressed: () {
+                      corrigir(resposta1, respostaCerta);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size(MediaQuery.of(context).size.width * .42,
+                            MediaQuery.of(context).size.height * .42),
+                        backgroundColor: Colors.red),
+                    child: const Icon(Icons.star, color: Colors.black),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      corrigir(resposta2, respostaCerta);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size(MediaQuery.of(context).size.width * .42,
+                            MediaQuery.of(context).size.height * .42),
+                        backgroundColor: Colors.amber),
+                    child: const Icon(Icons.circle, color: Colors.black),
+                  ),
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                ElevatedButton(onPressed: (){
-                  
-                  corrigir(resposta3, respostaCerta);
-                 },
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
-                  backgroundColor: Colors.blue
-                ), 
-                child: const Icon(Icons.beach_access_rounded, color: Colors.black), 
-              ),
-               ElevatedButton(onPressed: (){
-                
-                corrigir(resposta4, respostaCerta);
-               },
-              style: ElevatedButton.styleFrom(
-                fixedSize: Size(MediaQuery.of(context).size.width * .42, MediaQuery.of(context).size.height * .42),
-                backgroundColor: Colors.purple
-              ), 
-              child: const Icon(Icons.bedtime_rounded, color: Colors.black), 
+                  ElevatedButton(
+                    onPressed: () {
+                      corrigir(resposta3, respostaCerta);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size(MediaQuery.of(context).size.width * .42,
+                            MediaQuery.of(context).size.height * .42),
+                        backgroundColor: Colors.blue),
+                    child: const Icon(Icons.beach_access_rounded,
+                        color: Colors.black),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      corrigir(resposta4, respostaCerta);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size(MediaQuery.of(context).size.width * .42,
+                            MediaQuery.of(context).size.height * .42),
+                        backgroundColor: Colors.purple),
+                    child:
+                        const Icon(Icons.bedtime_rounded, color: Colors.black),
+                  ),
+                ],
               ),
             ],
-          )
-          ],
           );
-          
-        
-      
-  }
-    )
+        },
+      ),
     );
   }
 }

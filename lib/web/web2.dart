@@ -1,24 +1,29 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'teladeacertos.dart';
 
 // ignore: use_key_in_widget_constructors
 class WebScreen extends StatefulWidget {
+  final Function(int) onCurrentQuestionChanged;
+  WebScreen({required this.onCurrentQuestionChanged});
   @override
   State<WebScreen> createState() => _WebScreenState();
 }
 
 class _WebScreenState extends State<WebScreen> {
+  void onCurrentQuestionChanged(int newQuestion) {
+    setState(() {});
+  }
+
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   var currentQuestion = 1;
   int? totalQuestions;
   int acertos = 0;
   int timerDuration = 30; // Tempo inicial do timer (em segundos)
   late Timer timer;
+  var question = 0;
 
   Future _getQuestions() async {
     QuerySnapshot<Map<String, dynamic>> snapshot =
@@ -55,8 +60,6 @@ class _WebScreenState extends State<WebScreen> {
         if (timerDuration > 0) {
           timerDuration--; // Decrementa o tempo restante do timer
         } else {
-          
-          
           corrigir('a', 'b');
         }
       });
@@ -73,7 +76,6 @@ class _WebScreenState extends State<WebScreen> {
     }
 
     setState(() => currentQuestion++);
-    
 
     if (currentQuestion <= 5) {
       startTimer();
@@ -84,9 +86,11 @@ class _WebScreenState extends State<WebScreen> {
           .then((QuerySnapshot snapshot) {
         for (var doc in snapshot.docs) {
           doc.reference.update({'current_question': currentQuestion});
-        } //;
+        }
+        onCurrentQuestionChanged(currentQuestion);
       });
     }
+
     if (currentQuestion > totalQuestions!) {
       firestore
           .collection("Control")
@@ -129,16 +133,16 @@ class _WebScreenState extends State<WebScreen> {
           String resposta3 = question.data()['optionC'];
           String resposta4 = question.data()['optionD'];
           String respostaCerta = question.data()['correctOpt'];
-
+          setState(() {});
           return ListView(
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                        'Tempo restante: $timerDuration segundos',
-                        style: const TextStyle(fontSize: 20),
-                      ),
+                    'Tempo restante: $timerDuration segundos',
+                    style: const TextStyle(fontSize: 20),
+                  ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .5,
                     child: Center(
@@ -189,7 +193,7 @@ class _WebScreenState extends State<WebScreen> {
                             SizedBox(
                               width: 25,
                             ),
-                            Text(resposta2)
+                            Text(resposta2),
                           ],
                         ),
                       ),
@@ -216,7 +220,7 @@ class _WebScreenState extends State<WebScreen> {
                               SizedBox(
                                 width: 25,
                               ),
-                              Text(resposta3)
+                              Text(resposta3),
                             ],
                           )),
                       // ignore: sort_child_properties_last
@@ -236,11 +240,10 @@ class _WebScreenState extends State<WebScreen> {
                             const SizedBox(
                               width: 25,
                             ),
-                            Text(resposta4)
+                            Text(resposta4),
                           ],
                         ),
                       ),
-                      
                     ],
                   ),
                 ],
