@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 
 
 class TelaDeAcertos extends StatefulWidget {
-  int acertos;
-   TelaDeAcertos({Key? key, required this.acertos}) : super(key: key);
+   const TelaDeAcertos({Key? key,}) : super(key: key);
   
 
   @override
@@ -28,19 +27,19 @@ class _TelaDeAcertosState extends State<TelaDeAcertos> {
           width: double.infinity,
           height: double.infinity,
           child: Column(
-            children: [
-              const Padding(padding: EdgeInsets.all(20),
+            children: const [
+              Padding(padding: EdgeInsets.all(20),
               child: Text("Jogo finalizado!!", style: TextStyle(
                   fontSize: 30
                 )),
               ),
-              const Padding(padding: EdgeInsets.all(20),
+              Padding(padding: EdgeInsets.all(20),
               child: Text("Você todas as questões, como resultado obteve:", style: TextStyle(
                   fontSize: 30
                 )),
               ),
-              Padding(padding: const EdgeInsets.all(20),
-              child: Text("${widget.acertos} acertos", style: const TextStyle(
+              Padding(padding: EdgeInsets.all(20),
+              child: Text("acertos", style: TextStyle(
                   fontSize: 30
                 )),
               ),
