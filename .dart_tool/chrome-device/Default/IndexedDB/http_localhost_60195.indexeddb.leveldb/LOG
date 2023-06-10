@@ -1,0 +1,68 @@
+2023/06/10-12:55:46.340 4358 Reusing MANIFEST C:\Users\PAULOH~1\AppData\Local\Temp\flutter_tools.4d1fbea4\flutter_tools_chrome_device.35fee16e\Default\IndexedDB\http_localhost_60195.indexeddb.leveldb/MANIFEST-000001
+2023/06/10-12:55:46.341 4358 Recovering log #14
+2023/06/10-12:55:46.341 4358 Reusing old log C:\Users\PAULOH~1\AppData\Local\Temp\flutter_tools.4d1fbea4\flutter_tools_chrome_device.35fee16e\Default\IndexedDB\http_localhost_60195.indexeddb.leveldb/000014.log 
+2023/06/10-12:55:46.356 1fcc Level-0 table #18: started
+2023/06/10-12:55:46.363 1fcc Level-0 table #18: 850 bytes OK
+2023/06/10-12:55:46.367 1fcc Delete type=0 #14
+2023/06/10-12:55:46.367 1fcc Manual compaction at level-0 from '\x00\x06\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at '\x00\x06\x00\x00\x05' @ 200 : 1
+2023/06/10-12:55:46.369 1fcc Compacting 1@0 + 1@1 files
+2023/06/10-12:55:46.376 1fcc Generated table #19@0: 14 keys, 623 bytes
+2023/06/10-12:55:46.376 1fcc Compacted 1@0 + 1@1 files => 623 bytes
+2023/06/10-12:55:46.380 1fcc compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/06/10-12:55:46.381 1fcc Delete type=2 #18
+2023/06/10-12:55:46.382 4358 Manual compaction at level-0 from '\x00\x06\x00\x00\x05' @ 200 : 1 .. '\x00\x07\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/06/10-13:16:49.090 1fcc Level-0 table #21: started
+2023/06/10-13:16:49.098 1fcc Level-0 table #21: 860 bytes OK
+2023/06/10-13:16:49.105 1fcc Delete type=2 #15
+2023/06/10-13:16:49.105 1fcc Delete type=0 #17
+2023/06/10-13:16:49.106 1fcc Manual compaction at level-0 from '\x00\x07\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at '\x00\x07\x00\x00\x05' @ 233 : 1
+2023/06/10-13:16:49.106 1fcc Compacting 1@0 + 1@1 files
+2023/06/10-13:16:49.119 1fcc Generated table #22@0: 21 keys, 708 bytes
+2023/06/10-13:16:49.119 1fcc Compacted 1@0 + 1@1 files => 708 bytes
+2023/06/10-13:16:49.126 1fcc compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/06/10-13:16:49.126 1fcc Delete type=2 #21
+2023/06/10-13:16:49.126 1fd8 Manual compaction at level-0 from '\x00\x07\x00\x00\x05' @ 233 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/06/10-13:25:21.373 1fcc Level-0 table #24: started
+2023/06/10-13:25:21.384 1fcc Level-0 table #24: 859 bytes OK
+2023/06/10-13:25:21.394 1fcc Delete type=2 #19
+2023/06/10-13:25:21.394 1fcc Delete type=0 #20
+2023/06/10-13:25:21.395 1fcc Manual compaction at level-0 from '\x00\x08\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at '\x00\x08\x00\x00\x05' @ 266 : 1
+2023/06/10-13:25:21.395 1fcc Compacting 1@0 + 1@1 files
+2023/06/10-13:25:21.405 1fcc Generated table #25@0: 29 keys, 790 bytes
+2023/06/10-13:25:21.405 1fcc Compacted 1@0 + 1@1 files => 790 bytes
+2023/06/10-13:25:21.408 1fcc compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/06/10-13:25:21.408 1fcc Delete type=2 #24
+2023/06/10-13:25:21.408 1fcc Manual compaction at level-0 from '\x00\x08\x00\x00\x05' @ 266 : 1 .. '\x00\x09\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/06/10-13:25:24.084 1fcc Level-0 table #27: started
+2023/06/10-13:25:24.095 1fcc Level-0 table #27: 860 bytes OK
+2023/06/10-13:25:24.102 1fcc Delete type=2 #22
+2023/06/10-13:25:24.102 1fcc Delete type=0 #23
+2023/06/10-13:25:24.103 1fcc Manual compaction at level-0 from '\x00\x09\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at '\x00\x09\x00\x00\x05' @ 299 : 1
+2023/06/10-13:25:24.103 1fcc Compacting 1@0 + 1@1 files
+2023/06/10-13:25:24.109 1fcc Generated table #28@0: 37 keys, 879 bytes
+2023/06/10-13:25:24.109 1fcc Compacted 1@0 + 1@1 files => 879 bytes
+2023/06/10-13:25:24.112 1fcc compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/06/10-13:25:24.113 1fcc Delete type=2 #27
+2023/06/10-13:25:24.113 1fcc Manual compaction at level-0 from '\x00\x09\x00\x00\x05' @ 299 : 1 .. '\x00\x0a\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/06/10-14:21:17.391 1fcc Level-0 table #30: started
+2023/06/10-14:21:17.398 1fcc Level-0 table #30: 869 bytes OK
+2023/06/10-14:21:17.402 1fcc Delete type=2 #25
+2023/06/10-14:21:17.402 1fcc Delete type=0 #26
+2023/06/10-14:21:17.402 1fcc Manual compaction at level-0 from '\x00\x0a\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0a\x00\x00\x05' @ 332 : 1
+2023/06/10-14:21:17.402 1fcc Compacting 1@0 + 1@1 files
+2023/06/10-14:21:17.406 1fcc Generated table #31@0: 45 keys, 949 bytes
+2023/06/10-14:21:17.406 1fcc Compacted 1@0 + 1@1 files => 949 bytes
+2023/06/10-14:21:17.410 1fcc compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/06/10-14:21:17.410 1fcc Delete type=2 #30
+2023/06/10-14:21:17.410 1fcc Manual compaction at level-0 from '\x00\x0a\x00\x00\x05' @ 332 : 1 .. '\x00\x0b\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/06/10-14:21:28.078 1fcc Level-0 table #33: started
+2023/06/10-14:21:28.089 1fcc Level-0 table #33: 871 bytes OK
+2023/06/10-14:21:28.094 1fcc Delete type=2 #28
+2023/06/10-14:21:28.094 1fcc Delete type=0 #29
+2023/06/10-14:21:28.095 1fcc Manual compaction at level-0 from '\x00\x0b\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at '\x00\x0b\x00\x00\x05' @ 365 : 1
+2023/06/10-14:21:28.095 1fcc Compacting 1@0 + 1@1 files
+2023/06/10-14:21:28.100 1fcc Generated table #34@0: 53 keys, 1040 bytes
+2023/06/10-14:21:28.100 1fcc Compacted 1@0 + 1@1 files => 1040 bytes
+2023/06/10-14:21:28.104 1fcc compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/06/10-14:21:28.104 1fcc Delete type=2 #33
+2023/06/10-14:21:28.105 1fcc Manual compaction at level-0 from '\x00\x0b\x00\x00\x05' @ 365 : 1 .. '\x00\x0c\x00\x00\x00' @ 0 : 0; will stop at (end)

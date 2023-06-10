@@ -13,15 +13,9 @@ class _MobileScreenState extends State<MobileScreen> {
 
   // Armazenar no firestore a currentQuestion
   var currentQuestion = 1;
-   List<int> perguntasRespondidas = [];
+  List<int> perguntasRespondidas = [];
   int? totalQuestions;
   int acertos = 0;
-
-  // Future _getQuestions() async {
-  //   QuerySnapshot<Map<String, dynamic>> snapshot =
-  //       await firestore.collection("questions").get();
-  //   totalQuestions = snapshot.docs.length;
-  // }
 
   @override
   void initState() {
@@ -30,18 +24,15 @@ class _MobileScreenState extends State<MobileScreen> {
   }
 
   void corrigir(String resposta, String respostaCorreta) {
-    
-      if (resposta == respostaCorreta) {
-        setState(() {
+    if (resposta == respostaCorreta) {
+      setState(
+        () {
           acertos++;
-        });
-      }
-      
-  
-     
-    
-    
+        },
+      );
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +49,12 @@ class _MobileScreenState extends State<MobileScreen> {
           var controle = controlSnapshot.data!.docs[0];
           var perguntaCorrente = controle.data()['pergunta_corrente'];
 
-          bloquear(){
+          bloquear() {
             setState(() {
-      perguntasRespondidas.add(perguntaCorrente); // Adicionar a pergunta atual ao array de perguntas respondidas
-    });
+              perguntasRespondidas.add(
+                  perguntaCorrente); // Adicionar a pergunta atual ao array de perguntas respondidas
+            });
           }
-
-          
 
           return FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
             future: firestore
@@ -92,11 +82,14 @@ class _MobileScreenState extends State<MobileScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      ElevatedButton (
-                        onPressed: perguntasRespondidas.contains(perguntaCorrente) ? null : () {
-                          corrigir(resposta1, respostaCerta);
-                          bloquear();
-                        },
+                      ElevatedButton(
+                        onPressed:
+                            perguntasRespondidas.contains(perguntaCorrente)
+                                ? null
+                                : () {
+                                    corrigir(resposta1, respostaCerta);
+                                    bloquear();
+                                  },
                         style: ElevatedButton.styleFrom(
                             fixedSize: Size(
                                 MediaQuery.of(context).size.width * .42,
@@ -105,10 +98,13 @@ class _MobileScreenState extends State<MobileScreen> {
                         child: const Icon(Icons.star, color: Colors.black),
                       ),
                       ElevatedButton(
-                        onPressed: perguntasRespondidas.contains(perguntaCorrente) ? null : () {
-                          corrigir(resposta2, respostaCerta);
-                          bloquear();
-                        },
+                        onPressed:
+                            perguntasRespondidas.contains(perguntaCorrente)
+                                ? null
+                                : () {
+                                    corrigir(resposta2, respostaCerta);
+                                    bloquear();
+                                  },
                         style: ElevatedButton.styleFrom(
                             fixedSize: Size(
                                 MediaQuery.of(context).size.width * .42,
@@ -122,10 +118,13 @@ class _MobileScreenState extends State<MobileScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ElevatedButton(
-                        onPressed: perguntasRespondidas.contains(perguntaCorrente) ? null :() {
-                          corrigir(resposta3, respostaCerta);
-                          bloquear();
-                        },
+                        onPressed:
+                            perguntasRespondidas.contains(perguntaCorrente)
+                                ? null
+                                : () {
+                                    corrigir(resposta3, respostaCerta);
+                                    bloquear();
+                                  },
                         style: ElevatedButton.styleFrom(
                             fixedSize: Size(
                                 MediaQuery.of(context).size.width * .42,
@@ -135,10 +134,13 @@ class _MobileScreenState extends State<MobileScreen> {
                             color: Colors.black),
                       ),
                       ElevatedButton(
-                        onPressed: perguntasRespondidas.contains(perguntaCorrente) ? null :() {
-                          corrigir(resposta4, respostaCerta);
-                          bloquear();
-                        },
+                        onPressed:
+                            perguntasRespondidas.contains(perguntaCorrente)
+                                ? null
+                                : () {
+                                    corrigir(resposta4, respostaCerta);
+                                    bloquear();
+                                  },
                         style: ElevatedButton.styleFrom(
                             fixedSize: Size(
                                 MediaQuery.of(context).size.width * .42,
