@@ -15,7 +15,7 @@ class _WebScreenState extends State<WebScreen> {
 
   var currentQuestion = 1;
   late Timer timer;
-  int timerDuration = 2;
+  int timerDuration = 30;
   int? totalQuestions;
 
   Future _getQuestions() async {
@@ -50,7 +50,7 @@ class _WebScreenState extends State<WebScreen> {
 
   void nextQuestion() {
     timer.cancel();
-    timerDuration = 2;
+    timerDuration = 30;
     setState(() => currentQuestion++);
 
     if (currentQuestion <= totalQuestions!) {
